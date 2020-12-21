@@ -136,17 +136,6 @@
 		//const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	}
 }());
-// let preload = document.querySelector('.preview__video-item');
-
-// preload.onclick = function () {
-// 	document.querySelector('.preview').classList.add('load')
-
-// }
-
-// setTimeout(function () {
-// 	document.querySelector('.preview').classList.add('load')
-// }, 3900);
-
 
 
 
@@ -185,25 +174,6 @@ var swiper = new Swiper('.slider-rev', {
 
 
 
-// var rew = document.querySelectorAll('.btn__mob')
-
-// rew.forEach(function (el) {
-// 	el.onclick = function () {
-// 		el.parentElement.parentElement.classList.toggle("active");
-// 		el.classList.toggle("active");
-// 	}
-// });
-
-var qus = document.querySelectorAll('.inner-program__plus')
-
-qus.forEach(function (el) {
-	el.onclick = function () {
-		el.classList.toggle("active");
-		el.nextElementSibling.classList.toggle("active");
-	}
-});
-
-
 
 var qus = document.querySelectorAll('.qustions__item-plus')
 
@@ -214,153 +184,149 @@ qus.forEach(function (el) {
 	}
 });
 
-document.querySelector('.dop__btn').onclick = function () {
-	document.querySelector('.dop__files').classList.toggle("active");
-	document.querySelector('.dop__btn').classList.toggle("active");
-	document.querySelector('.dop__text').classList.toggle("active");
-}
 
-
-let video = document.querySelectorAll(".points__video");
-let video__close = document.querySelectorAll('.popup__close-video');
+//////////////////////////
 
 
 
-function stop() {
-	video.pause();
-	video.currentTime = 0;
-}
+
+let header = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".header",   // pin the trigger element while active
+		start: "top 60% ",
+		end: "center 40%",
+		// toggleActions: "play reverse restart resume",
 
 
-video__close.forEach(function (el) {
-	el.onclick = function () {
-		el.nextElementSibling.pause()
-		el.currentTime = 0;
 	}
 });
 
+header.from(".header__start", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "+=0.2")
+	.from(".header__title", { duration: 1.2, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".header__text", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.8")
+	.from(".header__btn", { duration: 1, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
 
 
+let about = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".about",   // pin the trigger element while active
+		start: "top 60% ",
+		end: "center 40%",
+		toggleActions: "play none none none",
 
-const popupLinks = document.querySelectorAll('.popup-link');
-const body = document.querySelector('body');
-const lockPadding = document.querySelectorAll(".lock-padding");
 
-let unlock = true;
-
-const timeout = 300;
-
-if (popupLinks.length > 0) {
-	for (let index = 0; index < popupLinks.length; index++) {
-		const popupLink = popupLinks[index];
-		popupLink.addEventListener("click", function (e) {
-			const popupName = popupLink.getAttribute('href').replace('#', '');
-			const curentPopup = document.getElementById(popupName);
-			popupOpen(curentPopup);
-			e.preventDefault();
-		});
-	}
-}
-const popupCloseIcon = document.querySelectorAll('.popup__close');
-if (popupCloseIcon.length > 0) {
-	for (let index = 0; index < popupCloseIcon.length; index++) {
-		const el = popupCloseIcon[index];
-		el.addEventListener('click', function (e) {
-			popupClose(el.closest('.popup'));
-			e.preventDefault();
-		});
-	}
-}
-
-function popupOpen(curentPopup) {
-	if (curentPopup && unlock) {
-		const popupActive = document.querySelector('.popup.open');
-		if (popupActive) {
-			popupClose(popupActive, false);
-		} else {
-			bodyLock();
-		}
-		curentPopup.classList.add('open');
 
 	}
-}
+});
 
-function popupClose(popupActive, doUnlock = true) {
-	if (unlock) {
-		popupActive.classList.remove('open');
-		if (doUnlock) {
-			bodyUnLock();
-		}
+about.from(".about__inner", { duration: 1, ease: "power4.out", opacity: 0, y: 200 }, "+=0.2")
+	.from(".inner-about__min", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".inner-about__title", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-about__btn", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-about__man", { duration: 1.4, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+
+
+let forr = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".forr",   // pin the trigger element while active
+		start: "top 60% ",
+		end: "center 40%",
+		toggleActions: "play none none none",
+
+
+
 	}
-}
+});
 
-function bodyLock() {
-	const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+forr.from(".forr__title", { duration: 1, ease: "power4.out", opacity: 0, y: 200 }, "+=0.2")
+	.from(".inner-forr__item-1", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".inner-forr__item-2", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-forr__item-3", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-forr__item-4", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-forr__item-5", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-forr__item-6", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
 
-	if (lockPadding.length > 0) {
-		for (let index = 0; index < lockPadding.length; index++) {
-			const el = lockPadding[index];
-			el.style.paddingRight = lockPaddingValue;
-		}
+
+
+let program = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".program",   // pin the trigger element while active
+		start: "top 60% ",
+		end: "center 40%",
+		toggleActions: "play none none none",
+
+
+
 	}
-	body.style.paddingRight = lockPaddingValue;
-	body.classList.add('lock');
+});
 
-	unlock = false;
-	setTimeout(function () {
-		unlock = true;
-	}, timeout);
-}
-
-function bodyUnLock() {
-	setTimeout(function () {
-		if (lockPadding.length > 0) {
-			for (let index = 0; index < lockPadding.length; index++) {
-				const el = lockPadding[index];
-				el.style.paddingRight = '0px';
-			}
-		}
-		body.style.paddingRight = '0px';
-		body.classList.remove('lock');
-	}, timeout);
-
-	unlock = false;
-	setTimeout(function () {
-		unlock = true;
-	}, timeout);
-}
+program.from(".program__title", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "+=0.2")
+	.from(".inner-program__item-1", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-program__item-2", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-program__item-3", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-program__item-4", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
+	.from(".inner-program__item-5", { duration: 0.9, ease: "power4.out", opacity: 0, y: 50 }, "-=0.6")
 
 
-(function () {
-	// проверяем поддержку
-	if (!Element.prototype.closest) {
-		// реализуем
-		Element.prototype.closest = function (css) {
-			var node = this;
-			while (node) {
-				if (node.matches(css)) return node;
-				else node = node.parentElement;
-			}
-			return null;
-		};
+
+
+
+
+let tarif = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".tarif",   // pin the trigger element while active
+		start: "top 60% ",
+		end: "center 40%",
+		toggleActions: "play none none none",
+
+
+
 	}
-})();
-(function () {
-	// проверяем поддержку
-	if (!Element.prototype.matches) {
-		// определяем свойство
-		Element.prototype.matches = Element.prototype.matchesSelector ||
-			Element.prototype.webkitMatchesSelector ||
-			Element.prototype.mozMatchesSelector ||
-			Element.prototype.msMatchesSelector;
+});
+
+tarif.from(".tarif__title", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "+=0.2")
+	.from(".inner-tarif__img-1", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".inner-tarif__img-2", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".inner-tarif__img-3", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+
+
+
+let qustions = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".qustions ",   // pin the trigger element while active
+		start: "top 60% ",
+		end: "center 40%",
+		toggleActions: "play none none none",
+
+
+
 	}
-})();
+});
+
+qustions.from(".qustions__title", { duration: 1, ease: "power4.out", opacity: 0, y: 100 }, "+=0.2")
+	.from(".qustions__item-1", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".qustions__item-2", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".qustions__item-3", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+	.from(".qustions__item-4", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.6")
+
+
+
+let footer = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".footer",   // pin the trigger element while active
+		start: "-200px 60% ",
+		end: "center 40%",
+		toggleActions: "play none none none",
 
 
 
 
+	}
+});
 
-
-
+footer.to(".rev__container", { duration: 1.2, ease: "power4.out", className: "+=rev__container _container active" }, "+=0.2")
+	.from(".footer__ip", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.4")
+	.from(".footer__call", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.4")
+	.from(".footer__img", { duration: 0.9, ease: "power4.out", opacity: 0, y: 100 }, "-=0.4")
 
 

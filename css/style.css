@@ -1047,7 +1047,26 @@ body.lock {
 .rev__container {
   position: relative;
   padding: 0px 0px 100px 0px;
-  border-bottom: 3px solid #ffb846;
+}
+
+.rev__container:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #ffb846;
+  -webkit-transition: all 1s ease 0s;
+  -o-transition: all 1s ease 0s;
+  transition: all 1s ease 0s;
+}
+
+.rev__container.active:before {
+  width: 100%;
 }
 
 .rev__title {
